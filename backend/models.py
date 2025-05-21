@@ -6,7 +6,7 @@ class Contact(db.Model):
     # Max length is 80 chars
     first_name = db.Column(db.String(80), unique = False, nullable = False)
     last_name = db.Column(db.String(80), unique = False, nullable = False)
-    e-mail = db.Column(db.String(120), unique = True, nullable = False)
+    email = db.Column(db.String(120), unique = True, nullable = False)
 
     # API will receive and send JSON contact info
     def to_json(self):
@@ -17,3 +17,5 @@ class Contact(db.Model):
             "email": self.email,
         }
         
+
+
