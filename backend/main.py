@@ -42,6 +42,18 @@ def update_contact(user_id):
 
     return jsonify({"message": "User updated."}), 200
 
+@app.route("/delete_contact/<int:user_id>", methods=["DELETE"])
+def delete_contact(user_id):
+    contact = Contact.query.get(user_id)
+
+    if not Contact:
+        return jsonify({"message": "User not found"}), 404
+
+    db.session.delete(contact)
+    db.session.commit()
+    
+    return jsonify({"message": "User deleted!"}), 200
+
 # Prevents file from being run if imported; ran if file is run directly
 if __name__ == "__main__":
 
